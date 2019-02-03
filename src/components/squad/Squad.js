@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Headings } from '../../elements';
-import { Colors } from '../../utilities';
+import { Colors, TypeColors } from '../../utilities';
 import Member from './Member';
 
 export class Squad extends Component {
@@ -12,8 +12,8 @@ export class Squad extends Component {
       <div>
         <Headings.h2>Selected Squad</Headings.h2>
         <SquadList>
-          {members.map((member,i) => (
-            <SquadListItem key={i}>
+          {members.map((member, i) => (
+            <SquadListItem key={i} member={member}>
               <Member member={member} />
             </SquadListItem>
           ))}
@@ -37,6 +37,14 @@ const SquadListItem = styled.li`
   align-items: center;
   background: ${Colors.grey};
   color: ${Colors.blue};
+
+  ${({ member }) => {
+    if(member) {
+      return `
+        background: ${TypeColors[member.types[0].name]}
+      `;
+    }
+  }}
 `;
 
 export default Squad;
