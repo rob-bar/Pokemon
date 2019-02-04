@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import { withRouter } from 'react-router';
 import { Headings, Input, PokemonList, Button } from '../../elements';
 import Downshift from 'downshift';
-import gql from 'graphql-tag';
+
 
 export class ChoosePokemon extends Component {
   render() {

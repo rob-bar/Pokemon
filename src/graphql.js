@@ -1,7 +1,7 @@
 import ApolloClient from 'apollo-boost';
 
 const defaultState = {
-  selectedPokemon: {},
+  selectedMoves: [],
   squad: []
 };
 

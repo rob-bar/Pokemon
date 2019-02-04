@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import { Headings } from '../../elements';
 import { Colors } from '../../utilities';
 
 export class SelectedMoves extends Component {
   render() {
-    const { selectedMoves } = this.props;
     return (
       <div>
         <Headings.h4>selected moves</Headings.h4>
         <MoveList>
-          {[...Array(4)].map((item, i) => {
-            if (selectedMoves && selectedMoves[i]) {
-              return (
-                <MoveListItem key={i}>
-                  <p className="level">Level Up</p>
-                  <p className="name">bla</p>
-                </MoveListItem>
-              );
-            } else {
-              return (
-                <MoveListItem type="empty" key={i}>
-                  <p className="empty">empty</p>
-                </MoveListItem>
-              );
+          <Query query={SELECTED_MOVES_CLIENT}>
+            {({ data: { selectedMoves } }) => {
+              console.log(selectedMoves);
+              return "";
             }
-          })}
+            }
+          </Query>
         </MoveList>
       </div>
     );
@@ -74,5 +66,11 @@ const MoveListItem = styled.li`
       `;
     }
   }}
+`;
+
+const SELECTED_MOVES_CLIENT = gql`
+  {
+    selectedMoves @client
+  }
 `;
 export default SelectedMoves;

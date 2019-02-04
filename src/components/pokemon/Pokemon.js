@@ -27,7 +27,7 @@ export class Pokemon extends Component {
                 <Name pokemon={Pokemon} addMember={addMember} />
                 <div>
                   <Stats stats={Pokemon.stats} />
-                  <SelectedMoves selectedMoves={Pokemon.selectedMoves} />
+                  <SelectedMoves />
                 </div>
                 <Moves updateSelected={updateSelected} pokemon={Pokemon} />
               </StyledPokemon>
